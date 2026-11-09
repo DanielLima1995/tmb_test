@@ -1,0 +1,11 @@
+@Loja.API_HostAddress = http://localhost:5161
+
+GET {{Loja.API_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{Loja.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

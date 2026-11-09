@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: Loja.API/Dockerfile
+    ports:
+      - "5161:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=tmb_test;Username=postgres;Password=${POSTGRES_PASSWORD:-localdevpostgres};"
+      JwtSettings__SecretKey: "${JWT_SECRET_KEY:-local-development-only-secret-key-change-before-use-2026}"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localdevpostgres}
+      POSTGRES_DB: tmb_test
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tmb_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+volumes:
+  postgres_data:

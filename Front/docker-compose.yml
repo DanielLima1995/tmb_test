@@ -1,0 +1,12 @@
+services:
+  pedidos-front:
+    build:
+      context: .
+      args:
+        VITE_PEDIDOS_HUB_URL: ${VITE_PEDIDOS_HUB_URL:-/hubs/pedidos}
+    ports:
+      - "8080:80"
+    environment:
+      API_PROXY_TARGET: ${API_PROXY_TARGET:-http://host.docker.internal:5161}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
