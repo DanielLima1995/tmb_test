@@ -5,7 +5,7 @@ using Loja.Application.DTOs.Update;
 using Loja.Application.Interfaces;
 using Loja.Domain.Entities;
 using Loja.Domain.Interfaces;
-using Loja.Domain.Parameters;
+
 using Mapster;
 
 namespace Loja.Application.Services;

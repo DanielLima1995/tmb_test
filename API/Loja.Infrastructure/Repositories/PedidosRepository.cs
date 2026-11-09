@@ -1,6 +1,6 @@
 ﻿using Loja.Domain.Entities;
 using Loja.Domain.Interfaces;
-using Loja.Domain.Parameters;
+
 using Loja.Infrastructure.Context;
 using Loja.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;

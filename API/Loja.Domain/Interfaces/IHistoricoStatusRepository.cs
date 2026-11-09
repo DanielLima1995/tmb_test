@@ -1,7 +1,6 @@
 ﻿
 
 using Loja.Domain.Entities;
-using Loja.Domain.Parameters;
 
 namespace Loja.Domain.Interfaces;
 
